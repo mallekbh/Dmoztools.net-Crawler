@@ -21,7 +21,7 @@ regex = re.compile(
         r'(?:/?|[/?]\S+)$', re.IGNORECASE)
 
 
-def getLinks(page,f,f2,browser):
+def getLinks(page,f,browser):
     print('page : '+str(page))
     
     browser.get(page)
@@ -53,17 +53,8 @@ def getLinks(page,f,f2,browser):
             if re.match(regex, l.get('href')) is not None:
                 sites3.append(l.get('href'))
                 f.write(l.get('href')+'#^$')
-                if False:
-                    uf = urllib.request.urlopen(l.get('href'))
-                    f2.write(text_from_html(l.get('href'))+'#^$')
-                    print('\t\tsucceed :'+l.get('href'))
-                if False:
-                    print('\t\t problem with : '+l.get('href'))
-                    f3=open('errors','w+')
-                    f3.write(f.name+':'+l.get('href')+'\n')
-                    f3.close()
         for i in links2:
-        	getLinks(urljoin(url,i.get('href')),f,f2,browser)        
+        	getLinks(urljoin(url,i.get('href')),f,browser)        
 
 
 def getContent(page):
@@ -111,7 +102,7 @@ for i in categories:
         f=open('SitesName/'+str(i),'w')
 #    f2=open('DataSets/SitesContents/'+str(i)+'new','w+')
 #    Thread(target = getLinks,args=(url+'/'+i,f,f2,browsers[i])).start()
-        getLinks(url+'/'+i,f,f2,web)
+        getLinks(url+'/'+i,f,web)
         f2=open('done','w+')
         f2.write(str(i)+'Sites#')
         f2.close()
