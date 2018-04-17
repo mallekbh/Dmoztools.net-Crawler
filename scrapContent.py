@@ -34,16 +34,17 @@ categories = ["Arts", "Games"]
 for d in categories:
 	succ=0
 	prob=0
-	f=open('SitesName/'+str(d),'r').read()
-	lis=f.split('^#$')
+	f=open('SitesName/'+str(d),'r')
+	c=f.read()
+	lis=c.split('#^$')
 	f2=open('SitesContents/'+str(d),'w')
 	f3=open('SitesNotScrapped/'+str(d),'w')
 	for i in lis:
 		try:
-			f2.write(str(scrap(i)))
+			f2.write(str(scrap(i))+'#^$')
 			print('Success : '+str(i))
 		except:
-			f3.write(str(i))
+			f3.write(str(i)+'#^$')
 			print('Problem : '+str(i))
 
 	f.close()
