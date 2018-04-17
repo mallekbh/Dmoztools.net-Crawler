@@ -29,8 +29,7 @@ web=webdriver.Firefox(firefox_options=options,capabilities=firefox_capabilities)
 
 
 
-categories = ["Arts", "Computers", "Health", "News", "Reference", "Science", "Society",
-                "Business", "Games", "Home", "Recreation", "Regional", "Shopping", "Sports"]
+categories = ["Arts", "Games"]
 
 for d in categories:
 	succ=0
