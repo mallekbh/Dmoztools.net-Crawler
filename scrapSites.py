@@ -108,7 +108,10 @@ categories=['Health','Business','Recreation','Sports','Computers','Home','Refere
 #browser=webdriver.Firefox(firefox_options=options,capabilities=firefox_capabilities)
 for i in categories:
 #    browsers[i] = webdriver.Firefox(firefox_options=options,capabilities=firefox_capabilities)
-    f=open('SitesName/'+str(i),'w')
+        f=open('SitesName/'+str(i),'w')
 #    f2=open('DataSets/SitesContents/'+str(i)+'new','w+')
 #    Thread(target = getLinks,args=(url+'/'+i,f,f2,browsers[i])).start()
-    getLinks(url+'/'+i,f,f2,web)
+        getLinks(url+'/'+i,f,f2,web)
+        f2=open('done','w+')
+        f2.write(str(i)+'Sites#')
+        f2.close()
