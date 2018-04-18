@@ -92,9 +92,9 @@ firefox_capabilities = DesiredCapabilities.FIREFOX
 firefox_capabilities['marionette'] = True
 options.add_argument("--headless")
 web=webdriver.Firefox(firefox_options=options,capabilities=firefox_capabilities)
-categories=['Health','Business','Recreation','Sports','Computers','Home','Reference','Shopping','Kids_and_Teens','News','Science']
-# Done : Arts , Games 
-# SemiDone : Region , Society
+categories=['Kids_and_Teens','News','Science', 'Region', 'Society']
+# Done : Arts , Games, Health, Business , Recreation , Sports, Computers, Home, Reference, Shopping
+
 
 #browser=webdriver.Firefox(firefox_options=options,capabilities=firefox_capabilities)
 for i in categories:
