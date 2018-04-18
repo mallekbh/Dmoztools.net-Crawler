@@ -54,7 +54,10 @@ def getLinks(page,f,browser):
                 sites3.append(l.get('href'))
                 f.write(l.get('href')+'#^$')
         for i in links2:
-        	getLinks(urljoin(url,i.get('href')),f,browser)        
+                try:
+        	        getLinks(urljoin(url,i.get('href')),f,browser)
+                except:
+                        print('Error. \n')
 
 
 def getContent(page):
