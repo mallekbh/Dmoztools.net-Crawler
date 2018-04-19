@@ -68,14 +68,18 @@ for d in range(0,max):
 		if len(lis[str(x)])>d:
 			i=i+1
 			try:
-				files[str(x)].write(str(scrap(i))+'#^$')
+				files[str(x)].write(str(scrap(str(lis[str(x)][d])))+'#^$')
 				print('Success : '+str(i))
 				succ=succ+1
 			except:
-				problems[str(x)].write(str(i)+'#^$')
+				problems[str(x)].write(str(lis[str(x)][d])+'#^$')
 				print('Problem : '+str(i))
 				prob=prob+1
 		print('Remaining : '+str(total-i))
 print(' Success : '+str(succ))
 print(' Failed : '+str(prob))
 print(' Percentage : '+str((succ/(prob+succ))*100)+'%')
+
+for r in categories:
+	files[str(r)].close()
+	problems[str(r)].close()
