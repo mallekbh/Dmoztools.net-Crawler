@@ -1,3 +1,4 @@
+from newspaper import Article
 import atexit
 from urllib.parse import urljoin
 from selenium import webdriver
@@ -12,7 +13,7 @@ from threading import Thread
 
 
 
-def scrap(body,web):
+def scrappy(body,web):
     web.get(str(body))
     html=web.page_source
     soup = BeautifulSoup(html, 'html.parser')
@@ -38,7 +39,11 @@ options.add_argument("--headless")
 
 
 
-
+def scrap(link):
+	article=Article(link)
+	article.download()
+	article.parse()
+	return article.text
 
 categories = ['Society','Health','Business','Recreation','Sports','Computers','Home','Reference','Shopping','Kids_and_Teens','News','Science','Games','Arts','Regional']
 for m in categories:
@@ -68,7 +73,7 @@ def exploit(x):
 	for d in range(0,len(lis[str(x)])):
 		i=i+1
 		try:
-			files[str(x)].write(str(scrap(str(lis[str(x)][d]),browsers[str(x)]))+'#^$')
+			files[str(x)].write(str(scrap(str(lis[str(x)][d])))+'#^$')
 			print('Category :'+str(x)+'\tSuccess : '+str(i))
 			succ=succ+1
 		except:
